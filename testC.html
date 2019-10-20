@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <style>
+      #bc1,
+      #bc2 {
+        height: 156px;
+        width: 148px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="bc1"></div>
+    <div id="bc2"></div>
+    <script src="./C.js"></script>
+    <script>
+      const clone1 = {
+        sex: "male",
+        id: "c5j818dyo5",
+        name: "Oleg Vladimirovich"
+      };
+      const clone2 = {
+        sex: "female",
+        id: "0owrgqqwfw",
+        name: "Dazdraperma Petrovna"
+      };
+      window.onload = function() {
+        renderBarcode(clone1, document.getElementById("bc1"));
+        renderBarcode(clone2, document.getElementById("bc2"));
+      };
+    </script>
+  </body>
+</html>

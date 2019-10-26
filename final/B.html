@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <style>
+      body {
+        margin: 0;
+      }
+
+      .root {
+        display: grid;
+        gap: 20px;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 200px 200px 200px;
+      }
+
+      .single {
+        background: #8a2be2;
+      }
+
+      .double {
+        background: #000;
+        grid-column: span 2;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="root">
+      <div class="single"></div>
+      <div class="single"></div>
+      <div class="single"></div>
+      <div class="single"></div>
+      <div class="double"></div>
+      <div class="double"></div>
+      <div class="single"></div>
+    </div>
+  </body>
+</html>

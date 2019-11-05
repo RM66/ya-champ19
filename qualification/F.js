@@ -3,8 +3,9 @@ const ONE_STEP_FACTOR = (1 / Framework.SPEED) * ONE_STEP_DEGREES;
 
 class MyClock extends Framework.Clock {
   active = false;
-  memo = [];
   firstShift = true;
+  memo = [];
+  shifting = false;
 
   constructor() {
     super();
@@ -38,6 +39,7 @@ class MyClock extends Framework.Clock {
         if (this.active) {
           this.memo.push([arrowS.pos, arrowM.pos]);
         } else {
+          this.shifting = true;
           if (this.firstShift) {
             this.firstShift = false;
             const [arrSShift, arrMShift] = this.calcShift([0, 0]);
@@ -70,10 +72,12 @@ class MyClock extends Framework.Clock {
     return [deltaS / ONE_STEP_DEGREES, deltaM / ONE_STEP_DEGREES];
   }
 
-  onAfterTick() {
+  onBeforeTick() {
     const [arrowS, arrowM] = this.arrows;
 
-    if (this.active) {
+    if (this.shifting) {
+      this.shifting = false;
+    } else if (this.active) {
       this.tick++;
       arrowS.rotateFactor = this.tick % 10 ? 0 : ONE_STEP_FACTOR;
       arrowM.rotateFactor = this.tick % 600 ? 0 : ONE_STEP_FACTOR;
